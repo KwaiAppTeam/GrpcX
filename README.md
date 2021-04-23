@@ -1,5 +1,5 @@
 # grpcx Plugin ReadMe
-> 在膜拜了[gRPC成神之路](https://kstack.corp.kuaishou.com/tech/web/article/info/305)之后，了解了grpc的一些基础知识，开发了grpcx Plugin。grpcx有如下优势：
+> grpcx有如下优势：
 > 1.    统一server、client逻辑，无论是native，还是flutter作为server or client，对于业务方调用方式基本类似；
 > 2.    简化通信方使用的channel，只有2个channel负责flutter和native的通信；
 > 3.    重新封装Plugin核心逻辑，使服务更加稳定；
@@ -139,4 +139,4 @@ FlutterApiGrpc.FlutterApiStub flutterApiStub = FlutterApiGrpc.newStub(KideaGrpcx
 ```
 在client访问方面，flutter作为client和native作为client还是有些许区别，这是grpc生成的代码导致的，不过实现成本还是很低。这里没有传入类似上例中**platform**的字段，是因为grpc生成方法时已经包含了该参数，本例为**flutter**。
 ## 总结
-作为一个程序猿，我们总想着能让机器干的事情就放手让机器去干。grpcx设计的初衷也是想在开发channel时避免没必要的code，只写核心代码。类似的库还有ks_channel_manager，谷歌官方的pigeon（我改进了下批量生成，详见[kidea_pigeon](https://git.corp.kuaishou.com/kidea/kidea_pigeon)）。每个库都有自己独特的一方面，目前我们使用最多的还是grpc，因为其生成的中间代码更加符合server/client模式。
+作为一个程序猿，我们总想着能让机器干的事情就放手让机器去干。grpcx设计的初衷也是想在开发channel时避免没必要的code，只写核心代码。类似的库还有ks_channel_manager，谷歌官方的pigeon（我改进了下批量生成）。每个库都有自己独特的一方面，目前我们使用最多的还是grpc，因为其生成的中间代码更加符合server/client模式。
