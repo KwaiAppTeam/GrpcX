@@ -1,0 +1,41 @@
+group 'com.kwai.creativity.kidea_grpcx'
+version '1.0'
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.5.0'
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        minSdkVersion 16
+    }
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+}
+
+dependencies {
+    //flutter调用native方法所依赖的
+    api 'io.grpc:grpc-protobuf-lite:1.18.0'
+    api 'io.grpc:grpc-stub:1.18.0'
+    //生成的java代码中依赖的注解解析
+    api 'javax.annotation:javax.annotation-api:1.3'
+}
