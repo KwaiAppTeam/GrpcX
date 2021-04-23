@@ -1,11 +1,11 @@
-# kidea_grpcx Plugin ReadMe
-> 在膜拜了[gRPC成神之路](https://kstack.corp.kuaishou.com/tech/web/article/info/305)之后，了解了grpc的一些基础知识，对现有的kwai_grpc plugin进行了逻辑梳理，最后着手优化，开发了kidea_grpcx Plugin。Grpcx较之前有如下优势：
+# grpcx Plugin ReadMe
+> 在膜拜了[gRPC成神之路](https://kstack.corp.kuaishou.com/tech/web/article/info/305)之后，了解了grpc的一些基础知识，开发了grpcx Plugin。grpcx有如下优势：
 > 1.    统一server、client逻辑，无论是native，还是flutter作为server or client，对于业务方调用方式基本类似；
 > 2.    简化通信方使用的channel，只有2个channel负责flutter和native的通信；
 > 3.    重新封装Plugin核心逻辑，使服务更加稳定；
 
-## kidea_grpcx前期准备
-1.    本plugin的example路径下有grpc_tools文件夹，其中包含了必须依赖的可执行文件，请将这个文件夹复制到目标工程的根目录下；
+## grpcx前期准备
+1. 本plugin的example路径下有grpc_tools文件夹，其中包含了必须依赖的可执行文件，请将这个文件夹复制到目标工程的根目录下；
 2. 本plugin的example路径下有Makefile文件，其中定义了proto、setup等命令，请将此文件复制到目标工程的根目录下；
 3. 1、2执行后，在工程根目录执行**make setup**来部署grpc需要的环境，用来生成三端代码；
 4. 一切准备就绪后，在工程根目录下定义proto文件夹，用来存放xxx.proto文件，这些文件就是我们需要定义的flutter和native直接的相互访问的API；
@@ -139,4 +139,4 @@ FlutterApiGrpc.FlutterApiStub flutterApiStub = FlutterApiGrpc.newStub(KideaGrpcx
 ```
 在client访问方面，flutter作为client和native作为client还是有些许区别，这是grpc生成的代码导致的，不过实现成本还是很低。这里没有传入类似上例中**platform**的字段，是因为grpc生成方法时已经包含了该参数，本例为**flutter**。
 ## 总结
-作为一个程序猿，我们总想着能让机器干的事情就放手让机器去干。我想kwai_grpc设计的初衷也是想在开发channel时避免没必要的code，只写核心代码。类似的库还有ks_channel_manager，谷歌官方的pigeon（我改进了下批量生成，详见[kidea_pigeon](https://git.corp.kuaishou.com/kidea/kidea_pigeon)）。每个库都有自己独特的一方面，目前我们使用最多的还是grpc，因为其生成的中间代码更加符合server/client模式。
+作为一个程序猿，我们总想着能让机器干的事情就放手让机器去干。grpcx设计的初衷也是想在开发channel时避免没必要的code，只写核心代码。类似的库还有ks_channel_manager，谷歌官方的pigeon（我改进了下批量生成，详见[kidea_pigeon](https://git.corp.kuaishou.com/kidea/kidea_pigeon)）。每个库都有自己独特的一方面，目前我们使用最多的还是grpc，因为其生成的中间代码更加符合server/client模式。

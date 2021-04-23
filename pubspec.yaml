@@ -1,8 +1,8 @@
 name: kidea_grpcx
-description: A new flutter plugin project.
-version: 0.0.3
-author:
-homepage:
+description: a plugin for generator code
+version: 0.0.3+2
+homepage: https://github.com/KwaiAppTeam/GrpcX.git
+publish_to: 'https://pub.dev'
 
 environment:
   sdk: ">=2.7.0 <3.0.0"

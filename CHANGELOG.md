@@ -1,3 +1,3 @@
 ## 0.0.1
-
-* TODO: Describe initial release.
+## 0.0.3+2 - 第一个对外的正式版本
+1.  如何使用请看ReadMe
